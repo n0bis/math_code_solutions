@@ -2,16 +2,15 @@ from collections import defaultdict
 from json import dumps
 
 simple_graph = {
-  'a': ['b'],
-  'b': ['c', 'e'],
-  'c': ['d', 'f'],
-  'd': ['g'],
-  'e': ['a', 'f'],
-  'f': ['b', 'g', 'h'],
-  'g': ['c', 'i'],
-  'h': ['e', 'i'],
-  'i': ['f', 'j'],
-  'j': ['h']
+  'a': ['i'],
+  'b': ['a', 'c'],
+  'c': ['i'],
+  'd': ['c'],
+  'e': ['d', 'i'],
+  'f': ['e', 'i'],
+  'g': ['f', 'h'],
+  'h': ['a'],
+  'i': ['b', 'd', 'g', 'h']
 }
 
 
@@ -35,5 +34,6 @@ def depth_first_search(graph, starting_vertex):
     traverse(starting_vertex)
     return traversal_times
 
-traversal_times = depth_first_search(simple_graph, 'a')
+start = 'i'
+traversal_times = depth_first_search(simple_graph, start)
 print(dumps(traversal_times, indent = 4))
