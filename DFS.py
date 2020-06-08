@@ -1,18 +1,6 @@
 from collections import defaultdict
 from json import dumps
 
-graph={
-  'a': ['b', 'd'],
-  'b': ['c', 'd'],
-  'c': ['e'],
-  'd': ['e'],
-  'e': ['b', 'f', 'g'],
-  'f': ['c', 'h', 'i'],
-  'g': ['d', 'h'],
-  'h': ['e', 'i'],
-  'i': []
-}
-
 def depth_first_search(graph, starting_vertex):
     visited = set()
     counter = [0]
@@ -45,6 +33,18 @@ def check_is_strong_connected_component(graph, start):
         for edge in edges:
             reversed_graph[edge].append(vertex)
     depth_first_search(reversed_graph, start)
+
+graph={
+  'a': ['b', 'd'],
+  'b': ['c', 'd'],
+  'c': ['e'],
+  'd': ['e'],
+  'e': ['b', 'f', 'g'],
+  'f': ['c', 'h', 'i'],
+  'g': ['d', 'h'],
+  'h': ['e', 'i'],
+  'i': []
+}
 
 start = 'a'
 traversal_times = depth_first_search(graph, start)
