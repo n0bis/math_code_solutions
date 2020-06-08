@@ -1,18 +1,17 @@
 from collections import defaultdict
 from json import dumps
 
-simple_graph = {
-  'a': ['i'],
-  'b': ['a', 'c'],
-  'c': ['i'],
-  'd': ['c'],
-  'e': ['d', 'i'],
-  'f': ['e', 'i'],
-  'g': ['f', 'h'],
-  'h': ['a'],
-  'i': ['b', 'd', 'g', 'h']
+graph={
+  'a': ['b', 'd'],
+  'b': ['c', 'd'],
+  'c': ['e'],
+  'd': ['e'],
+  'e': ['b', 'f', 'g'],
+  'f': ['c', 'h', 'i'],
+  'g': ['d', 'h'],
+  'h': ['e', 'i'],
+  'i': []
 }
-
 
 def depth_first_search(graph, starting_vertex):
     visited = set()
@@ -31,9 +30,23 @@ def depth_first_search(graph, starting_vertex):
         counter[0] += 1
         traversal_times[vertex]['finish'] = counter[0]
 
+    def connected_component():
+        for vertex in graph:
+            if vertex not in visited:
+                print(f'vertex not visited: {vertex}')
+
     traverse(starting_vertex)
+    connected_component()
     return traversal_times
 
-start = 'i'
-traversal_times = depth_first_search(simple_graph, start)
+def check_is_strong_connected_component(graph, start):
+    reversed_graph = defaultdict(list)
+    for vertex, edges in graph.items():
+        for edge in edges:
+            reversed_graph[edge].append(vertex)
+    depth_first_search(reversed_graph, start)
+
+start = 'a'
+traversal_times = depth_first_search(graph, start)
 print(dumps(traversal_times, indent = 4))
+check_is_strong_connected_component(graph, start)
