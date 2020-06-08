@@ -3,4 +3,5 @@
 # External libs
 Install via pip <br />
 https://pypi.org/project/big-O/ <br />
-https://pypi.org/project/huffman/
+https://pypi.org/project/huffman/ <br />
+https://pypi.org/project/binarytree/
