@@ -35,11 +35,14 @@ def radixSort(array):
 
     # Apply counting sort to sort elements based on place value.
     place = 1
+    i = 1
     while max_element // place > 0:
         countingSort(array, place)
+        print(f'iteration {i}: {array}')
         place *= 10
+        i += 1
 
-
-data = [747, 765, 544, 754, 431, 231, 222]
+data = [2452, 5363, 4433, 1413, 2433, 3222, 2121]
 radixSort(data)
+print('-----')
 print(data)
