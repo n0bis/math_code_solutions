@@ -18,21 +18,8 @@ def depth_first_search(graph, starting_vertex):
         counter[0] += 1
         traversal_times[vertex]['finish'] = counter[0]
 
-    def connected_component():
-        for vertex in graph:
-            if vertex not in visited:
-                print(f'vertex not visited: {vertex}')
-
     traverse(starting_vertex)
-    connected_component()
     return traversal_times
-
-def check_is_strong_connected_component(graph, start):
-    reversed_graph = defaultdict(list)
-    for vertex, edges in graph.items():
-        for edge in edges:
-            reversed_graph[edge].append(vertex)
-    depth_first_search(reversed_graph, start)
 
 graph={
   'a': ['b', 'd'],
@@ -48,5 +35,4 @@ graph={
 
 start = 'a'
 traversal_times = depth_first_search(graph, start)
-print(dumps(traversal_times, indent = 4))
-check_is_strong_connected_component(graph, start)
+print(dumps(sorted(traversal_times.items()), indent = 4))
