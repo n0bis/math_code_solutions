@@ -1,3 +1,5 @@
+from math import pow, log2, log10
+
 def gange_syv(n):
   x = n
   r = 0
@@ -9,14 +11,18 @@ def gange_syv(n):
   return r
 
 def ToPotens(n):
-  x = n
-  r = 1
-  while x > 0:
-    print(f'invariant start: {x >= 0}')
-    r = 2*r
-    x = x -1
-    print(f'invariant end: {x >= 0}')
-    return r
+  x = 1
+  r = 0
+  while x < n:
+    print(f'invariant start: {x < 2*n}')
+    x = 2 * x
+    r = r + 1
+    print(f'invariant end: {x < 2*n}')
+  return r
 
-for i in range(5):
+# n >= 0
+# for i in range(5):
+
+# n >= 1
+for i in range(1, 6):
   ToPotens(i)
