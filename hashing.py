@@ -82,3 +82,8 @@ if __name__ == '__main__':
 
   linear_probing(hash=hash, A=a, x=45)
   
+  # function not given bot value - change in code to get value of function
+
+  #double_hashing(3 , 6, a, 11)
+  
+  #linear_probing(6, a, 11) 
